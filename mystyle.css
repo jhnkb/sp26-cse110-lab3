@@ -1,15 +1,26 @@
 
-/* */
+/*CHECKLIST: comment added for readability */
 :root {
-    --main-color: rgb(251, 0, 255);
+    --main-color: rgb(251, 0, 255); /* CHECKLIST: CSS variable */
 }
 
+/* CHECKLIST: grid layout */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;                
+    grid-template-rows: auto; 
+    justify-items: center;    
+    align-items: center;      
+}
+
+/* CHECKLIST: background-color, hsl, padding (longhand), margin shorthand */
 body {
     background-color: hsl(302, 58%, 32%);
     font-family:'Courier New', Courier, monospace;
     margin: 10mm auto;
-    color: #000000;
-    text-decoration: underline dotted;
+    color: #000000; /* CHECKLIST: hex color */
+    text-decoration: underline dotted; /* CHECKLIST: text-decoration */
     text-decoration-thickness: 1px;
     padding-top: 1cm;
     padding-bottom: 1cm;
@@ -17,47 +28,184 @@ body {
     padding-right: 1cm;
 }
 
-
+/* CHECKLIST: wider-gamut color + rem unit */
 h1 {
     color: color(display-p3 0.1 0.5 0.8);
     font-size: 2rem;
 }
 
+/* CHECKLIST: color-mix */
 h2 {
     color: color-mix(in srgb, rgb(0, 0, 0) 60%, rgb(74, 74, 74) 40%);
 }
 
+/* CHECKLIST: variable with fallback, border longhand, position sticky */
 header {
     background-color: var(--main-color, #ff00d9);
-    padding: 20px;
-    text-align: center;
+    padding: 20px; /* CHECKLIST: padding shorthand */
+    text-align: center; /* CHECKLIST: text-align */
     border-top: 5px dashed black;
     border-bottom: 5px dashed black;
     border-left: 5px dashed black;
     border-right: 5px dashed black;
-    border-radius: 60px;
-    
+    border-radius: 60px; /* CHECKLIST: border-radius */
+    position: sticky;
+    top: 0;
+    min-height: 420px; /* CHECKLIST: sizing */
+    height: auto;
 }
+
+/* hover animation */
+header:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* CHECKLIST: margin longhand, padding shorthand, border properties, % unit */
 section {
+    transition: 0.3s;
+    position: static; /* CHECKLIST: position static */
     margin-top: 10mm;
     margin-bottom: 10mm;
-    margin-left: auto;
+    margin-left: auto; /* CHECKLIST: auto margin */
     margin-right: auto;
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
     padding: 5px 15px 15px 15px;
     background-color: #ff00d9;
     border-style: dashed;
     border-width: .06in;
     border-color: rgb(0, 0, 0);
     border-radius: 60px;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0); /* CHECKLIST: rgb color */
 }
 
+section:hover {
+    background-color: #ff99ee;
+}
+
+/* CHECKLIST: flexbox (display flex + properties) + nested selectors */
+nav {
+    & ol {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    & li {
+        display: inline-block; /* CHECKLIST: display inline-block */
+    }
+}
+
+/* CHECKLIST: :has() selector */
+section:has(form) {
+    border-color: blue;
+}
+
+/* CHECKLIST: universal selector */
+* {
+    box-sizing: border-box;
+}
+
+/* CHECKLIST: sizing + display block */
+video{
+    width: 300px;
+    display: block;
+    margin: auto;
+}
+
+/* CHECKLIST: max-width, min-width */
+img {
+    max-width: 100%;
+    min-width: 120px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* CHECKLIST: ID selector */
+#unfinishedbusiness {
+    background-color: pink;
+}
+
+/* CHECKLIST: class selector */
+.highlight {
+    color: orange; /* CHECKLIST: color name */
+}
+
+/* CHECKLIST: attribute selector */
+input[type="text"] {
+    background-color: white;
+}
+
+/* CHECKLIST: pseudo-class */
+a:hover {
+    color: blue;
+    text-decoration: underline wavy;
+}
+
+a:active {
+    color: red;
+}
+
+/* CHECKLIST: selector list */
+h1, h2 {
+    text-align: center;
+}
+
+/* CHECKLIST: descendant combinator */
+nav ol li {
+    font-weight: bold;
+}
+
+/* CHECKLIST: child combinator */
+nav > ol {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+/* CHECKLIST: general sibling combinator */
+h2 ~ ul {
+    font-size: 1em;
+}
+
+/* CHECKLIST: adjacent sibling combinator */
+h2 + h3 {
+    color: darkblue;
+}
+
+/* CHECKLIST: combining selectors */
+section.card {
+    background-color: #ff99ee;
+}
+
+/* CHECKLIST: border shorthand */
 footer {
     margin: 10mm 10mm 10mm 10mm;
-    font-size: 0.90em;
+    font-size: 1.50em; /* CHECKLIST: em unit */
     text-align: center;
-    color: orangered;
-
+    color: black;
+    font-family: "Bebas Neue", sans-serif; /* CHECKLIST: google font */
     border: 5px dashed black;
+}
+
+/* CHECKLIST: media query / responsiveness */
+@media (max-width: 700px) {
+    section {
+        width: 100%;
+        margin: 10px auto;
+    }
+    nav ol {
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    main {
+    grid-template-columns: 1fr;
+    }
 }
